@@ -1,0 +1,16 @@
+---
+- name: Install, start and add in startup tuned package
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install tuned
+      ansible.builtin.apt:
+        name: tuned
+        state: present
+        update_cache: yes
+    - name: Start and add in startup tuned
+      ansible.builtin.systemd:
+        name: tuned
+        state: started
+        enabled: yes
+

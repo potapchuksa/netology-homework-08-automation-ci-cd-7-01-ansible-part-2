@@ -1,0 +1,14 @@
+---
+- name: Modify motd
+  hosts: all
+  become: yes
+  vars:
+    - my_dest: "/etc/update-motd.d/"
+  vars_files:
+    - ./variables.yml
+  tasks:
+    - name: Add new message to motd
+      ansible.builtin.copy:
+        src: "{{ my_src }}"
+        dest: "{{ my_dest }}{{ my_file }}"
+        mode: '0755'

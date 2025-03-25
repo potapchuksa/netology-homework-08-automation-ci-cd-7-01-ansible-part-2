@@ -1,0 +1,18 @@
+---
+- name: Download kafka
+  hosts: all
+  tasks:
+    - name: Create directory
+      ansible.builtin.file:
+        path: ~/kafka
+        state: directory
+    - name: Download kafka arhive from url
+      ansible.builtin.get_url:
+        url: https://dlcdn.apache.org/kafka/4.0.0/kafka-4.0.0-src.tgz
+        dest: ~/kafka/
+    - name: Unarchive
+      ansible.builtin.unarchive:
+        src: ~/kafka/kafka-4.0.0-src.tgz
+        dest: ~/kafka
+        remote_src: yes
+
