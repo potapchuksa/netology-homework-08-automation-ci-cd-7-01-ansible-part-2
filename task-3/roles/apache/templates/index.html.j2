@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <h1>System Information</h1>
+        <p><strong>CPU:</strong> {{ ansible_facts.processor }}</p>
+        <p><strong>RAM:</strong> {{ ansible_facts.memtotal_mb }} MB</p>
+        <p><strong>First HDD Size:</strong> {{ ansible_facts.devices.sda.size }}</p>
+        <p><strong>IP Addresses:</strong> {{ ansible_facts.all_ipv4_addresses }}</p>
+    </div>
+</body>
+</html>

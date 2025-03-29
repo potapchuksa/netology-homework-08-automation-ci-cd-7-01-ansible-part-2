@@ -1,0 +1,10 @@
+- name: restart apache
+  ansible.builtin.service:
+    name: apache2
+    state: restarted
+
+- name: checking status
+  ansible.builtin.uri:
+    url: "http://{{ ansible_facts['enp0s8']['ipv4']['address'] }}"
+    status_code: 200
+
